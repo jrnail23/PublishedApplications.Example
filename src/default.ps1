@@ -19,6 +19,7 @@ Task BuildLibraryA -depends Clean {
 }
 
 Task BuildLibraryC -depends Clean {
+    Write-Host "building LibraryC via its project file, which DOES use PublishedApplications" -ForegroundColor Cyan
     msbuild .\LibraryC\LibraryC.csproj /verbosity:quiet /p:OutDir=..\buildOutput\libC /nologo
 } -postcondition { 
     Write-Host "Asserting that 'Copy to Output Directory' content (contained in a folder) from referenced assembly gets written to that folder under the output directory"
